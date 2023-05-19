@@ -7,6 +7,16 @@ export async function openLink(urlToOpen, color) {
     const url = urlToOpen;
     if (await InAppBrowser.isAvailable()) {
       await InAppBrowser.open(url, {
+        // iOS Properties
+        dismissButtonStyle: 'cancel',
+        preferredBarTintColor: '#453AA4',
+        preferredControlTintColor: 'white',
+        readerMode: false,
+        animated: true,
+        modalPresentationStyle: 'fullScreen',
+        modalTransitionStyle: 'coverVertical',
+        modalEnabled: true,
+        enableBarCollapsing: false,
         // Android Properties
         showTitle: true,
         toolbarColor: color,
@@ -41,8 +51,10 @@ function App() {
     console.log('App running');
   }, []);
   return (
-    <View>
-      <Button onPress={() => openWebView()} title="Open Webview" />
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <View>
+        <Button onPress={() => openWebView()} title="Open Webview" />
+      </View>
     </View>
   );
 }
